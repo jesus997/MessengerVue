@@ -1,0 +1,92 @@
+.image-profile {
+	max-width: 50px;
+	height: auto;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 2px solid #ddd;
+}
+
+.image-profile > img {
+	max-width: 100%;
+}
+
+.user-profile > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.navbar-inner > form,
+.navbar-inner > .user-profile {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+div#chatzone ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.message-box {
+	width: 100%;
+	background: transparent;
+	margin-bottom: 20px;
+}
+
+.message-box .user-image {
+	max-width: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 2px solid #ddd;
+	height: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.message-box .user-image img {
+	width: 100%;
+}
+
+.message-box .message-content {
+	max-width: 400px;
+	min-width: 150px;
+	width: auto;
+	background: #ddd;
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	padding: 4px 8px;
+}
+
+.message-box .message-content p {
+	margin: 0;
+}
+
+.message-box.active {
+	text-align: right;
+}
+
+.message-box.active .message-content {
+	margin-left: 0;
+	margin-right: 20px;
+}
+
+div#chatzone {
+	max-height: calc(100vh - 136px);
+	overflow-y: scroll;
+}
+
+.user-removed .message-box {
+    opacity: .8;
+}
+
+.user-removed .message-box b, .user-removed .message-box p {
+    text-decoration: line-through;
+    color: #a0a0a0;
+}
+
+.user-removed .message-box img {
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}

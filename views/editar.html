@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+	<meta charset="utf-8" />
+	<title>Editar usuario | Messenger.io</title>
+	<link rel="stylesheet" href="/css/login.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+
+	<div class="pen-title">
+		<h1>Editar a {{ user.name }}</h1>
+	</div>
+
+	<div class="error-module">
+		<p>{{ error }}</p>
+	</div>
+
+	<div class="message-module">
+		<p>{{ message }}</p>
+	</div>
+
+	<div class="module form-module">
+		<div class="form2">
+			<h2>Editar</h2>
+			<form action="/save/{{ user.id }}" method="POST">
+				<input type="text" name="name" placeholder="Nombre" value="{{ user.name }}" required />
+				<input type="text" name="lastname" placeholder="Apellido" value="{{ user.lastname }}" required />
+				<input type="email" name="email" placeholder="Email" value="{{ user.email }}" required />
+				<input type="password" name="password" placeholder="Contraseña" value="" required />
+				<input type="hidden" name="profile" value="{{ user.profile }}" hidden />
+				<input type="hidden" name="role" value="{{ user.role }}" hidden />
+				<button type="submit">Editar</button>
+			</form>
+		</div>
+		<div class="cta">
+			<a href="/users">Regresar</a>
+		</div>
+	</div>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="/js/login.js"></script>
+</body>
+</html>

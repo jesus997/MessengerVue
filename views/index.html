@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Messenger.io</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body>
+		<div id="app">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<a class="navbar-brand" href="/">Messenger.io</a>
+
+				<div class="navbar-inner ml-auto">
+					<a class="btn btn-primary" href="/users" v-if="current.role == 1">Administrar Usuarios</a>
+					<form class="form-inline my-2 my-lg-0">
+						<input type="text" class="form-control" placeholder="Buscar mensaje" aria-label="Search for..."  v-model="search">
+					</form>
+					<div class="user-profile ml-3"> 
+						<div class="image-profile">
+							<img :src="current.profile" :alt="current.name" />
+						</div>
+						<div class="dropdown">
+							<button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								${ current.name } ${ current.lastname }
+							</button>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="/logout">Cerrar sesión</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<div class="container-fluid mt-4">
+				<div class="row">
+					<div class="col-md-3 col-12">
+						<h3>Usuarios Activos</h3>
+						<ul class="list-group">
+							<users-list
+							v-for="user in users"
+							v-bind:user="user"
+							v-bind:key="user.id">
+							</users-list>
+						</ul>
+					</div>
+					<div class="col-md-9 col-12">
+						<div class="chat-wrapper">
+							<div id="chatzone">
+								<ul>
+									<messages-list
+									v-for="message in filteredMessages"
+									v-bind:currentuser="current"
+									v-bind:data="message"
+									v-bind:key="message.id">
+									</messages-list>
+								</ul>
+							</div>
+							<div class="chat-sender">
+								<form @submit="sendMessage" action="/" method="post">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Escribe un mensaje :)" aria-label="Escribe un mensaje" v-model="raw" />
+										<span class="input-group-btn">
+										<button type="submit" class="btn btn-secondary" type="button">Enviar</button>
+										</span>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://unpkg.com/vue"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="/js/main.js"></script>
+	</body>
+</html>

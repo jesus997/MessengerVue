@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+	<meta charset="utf-8" />
+	<title>Iniciar sesión | Messenger.io</title>
+	<link rel="stylesheet" href="/css/login.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+
+	<div class="pen-title">
+		<h1>Mini Messenger</h1><span> by <a href='#'>Jesús Magallón</a></span>
+	</div>
+
+	<div class="error-module">
+		<p>{{ error }}</p>
+	</div>
+
+	<div class="message-module">
+		<p>{{ message }}</p>
+	</div>
+
+	<div class="module form-module">
+		<div class="toggle"><i class="fa fa-times fa-pencil"></i>
+			<div id="tooltip" class="tooltip">Registrarse</div>
+		</div>
+		<div class="form">
+			<h2>Inicia sesión</h2>
+			<form action="/login" method="POST">
+				<input type="hidden" name="action" value="login" autofocus hidden />
+				<input type="email" name="email" placeholder="Email" value="{{ email }}" required />
+				<input type="password" name="password" placeholder="Contraseña" required />
+				<button type="submit">Iniciar sesión</button>
+			</form>
+		</div>
+		<div class="form">
+			<h2>Crea una cuenta</h2>
+			<form action="/login" method="POST">
+				<input type="hidden" name="action" value="register" hidden />
+				<input type="text" name="name" placeholder="Nombre" required />
+				<input type="text" name="lastname" placeholder="Apellido" required />
+				<input type="email" name="email" placeholder="Email" required />
+				<input type="password" name="password" placeholder="Contraseña" required />
+				<button type="submit">Registrarse</button>
+			</form>
+		</div>
+		<div class="cta">
+			Create with <i class="fa fa-heart"></i> by Jesús Magallón
+		</div>
+	</div>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="/js/login.js"></script>
+</body>
+</html>
